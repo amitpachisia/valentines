@@ -106,7 +106,7 @@ button{
 <body>
 
 <div class="container">
-  <h1>Will you be my Valentine? 💖</h1>
+  <h1>Would you be my Valentine? 💖</h1>
 
   <div class="buttons" id="btnArea">
     <button id="yesBtn">Yes 😍</button>
@@ -117,19 +117,28 @@ button{
     <h2>Yay! I knew it ❤️</h2>
     <p>Happy Valentine’s Day!</p>
 
-    <!-- Sample couple image (replace later with your own photo) -->
+    <!-- Replace later with your own photo -->
     <img
       src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=900&auto=format&fit=crop"
       alt="Couple">
   </div>
 </div>
 
+<!-- Romantic background music (plays after YES click) -->
+<audio id="bgMusic" loop>
+  <source
+    src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b4c7a1f0c.mp3?filename=romantic-piano-112199.mp3"
+    type="audio/mpeg">
+</audio>
+
 <script>
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const result = document.getElementById("result");
 const container = document.getElementById("btnArea");
+const bgMusic = document.getElementById("bgMusic");
 
+/* Move NO button */
 function moveNoButton() {
 
   const areaWidth = container.clientWidth - noBtn.offsetWidth;
@@ -143,7 +152,7 @@ function moveNoButton() {
   noBtn.style.right = "auto";
 }
 
-/* ---- Make NO impossible to click ---- */
+/* Make NO impossible to click */
 noBtn.addEventListener("mouseenter", moveNoButton);
 
 noBtn.addEventListener("mousedown", function(e){
@@ -161,13 +170,16 @@ noBtn.addEventListener("click", function(e){
   moveNoButton();
 });
 
-/* ---- YES logic ---- */
+/* YES logic */
 yesBtn.addEventListener("click", () => {
   result.style.display = "block";
   startHearts();
+
+  bgMusic.volume = 0.6;
+  bgMusic.play().catch(() => {});
 });
 
-/* ---- Hearts animation ---- */
+/* Hearts animation */
 let heartIntervalStarted = false;
 
 function startHearts(){
