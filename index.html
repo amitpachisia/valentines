@@ -1,576 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Amit & Deevanshi | Royal Wedding Celebration</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&family=Rozha+One&display=swap" rel="stylesheet">
+<title>Be My Valentine ❤️</title>
 
 <style>
-/* ================= THEME & RESET ================= */
-:root {
-  --primary: #581622;
-  --gold-dark: #b88746;
-  --gold-light: #fdfbf7;
-  --gold-metallic: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-  --bg-warm: #fdfcf8;
-  --text-dark: #2c2c2c;
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --shadow-soft: 0 10px 30px rgba(0,0,0,0.15);
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-warm);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-  color: var(--text-dark);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-
-/* ---------------- LANGUAGE TOGGLE ---------------- */
-.lang-switch {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 30px;
-  padding: 5px;
-  display: flex;
-  gap: 5px;
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  color: #fff; /* White for hero visibility */
-  padding: 8px 16px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-/* Active state styling */
-.lang-btn.active {
-  background: var(--gold-metallic);
-  color: #4a3b18;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-/* Dark text for toggle when scrolled past hero (optional, keeping simple for now) */
-
-/* ---------------- ANIMATIONS ---------------- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease-out;
-}
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-/* ---------------- HERO ---------------- */
-.hero {
-  height: 100vh;
-  height: 100dvh;
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
-              url('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  color: var(--gold-light);
-  overflow: hidden;
-}
-
-canvas { position:absolute; inset:0; z-index:1; pointer-events:none; }
-
-.hero-content {
-  position:relative;
-  z-index:3;
-  text-align:center;
-  padding: 0 20px;
-  animation: fadeInUp 1.5s ease-out;
-}
-
-.hero-icon {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #fcf6ba;
-  opacity: 0.9;
-}
-
-/* ---------------- TYPOGRAPHY ---------------- */
-/* Default English Style */
-.hero h1 {
-  font-family: 'Great Vibes', cursive; 
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  line-height: 1.2;
-  background: var(--gold-metallic);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  margin-bottom: 10px;
-  padding: 0 10px;
-}
-
-/* Hindi Style Override - Cursive is hard to read in Hindi */
-body.hindi-active .hero h1 {
-  font-family: 'Rozha One', serif;
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-.save-date {
-  font-family: 'Cinzel', serif;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 0.9rem;
-  color: #f0e6d2;
-}
-
-.wedding-date {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-style: italic;
-  letter-spacing: 1px;
-  margin-top: 5px;
-}
-
-/* ---------------- COUNTDOWN ---------------- */
-.countdown {
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
   display:flex;
   justify-content:center;
-  gap: 15px;
-  margin-top: 40px;
-}
-
-.time-box {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(8px);
-  padding: 10px;
-  width: 75px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.time-box span {
-  display:block;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  line-height: 1;
-  color: #fcf6ba;
-}
-
-.time-box small {
-  font-size: 0.6rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  opacity: 0.8;
-}
-
-/* ---------------- SECTIONS ---------------- */
-h2 {
-  text-align:center;
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  color: var(--primary);
-  margin: 70px 0 40px;
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-body.hindi-active h2 { font-family: 'Rozha One', serif; }
-
-h2::after {
-  content: "❖";
-  display: block;
-  font-size: 1rem;
-  margin-top: 10px;
-  color: var(--gold-dark);
-}
-
-.event-section {
-  position:relative;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  min-height: 350px;
-  display:flex;
   align-items:center;
-  justify-content: center;
-  padding: 60px 20px;
+  overflow:hidden;
 }
 
-.event-section::before {
-  content:'';
+.container{
+  background:rgba(255,255,255,0.95);
+  padding:30px 20px;
+  border-radius:20px;
+  width:90%;
+  max-width:380px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+  color:#ff2f68;
+  margin-bottom:20px;
+  font-size:24px;
+}
+
+.buttons{
+  margin-top:25px;
+  position:relative;
+  height:80px;
+}
+
+button{
+  padding:12px 24px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  transition:transform 0.2s ease;
   position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.5);
 }
 
-.event-card {
-  position:relative;
-  max-width:500px;
+#yesBtn{
+  left:30px;
+  background:#ff2f68;
+  color:#fff;
+}
+
+#noBtn{
+  right:30px;
+  background:#ddd;
+  color:#444;
+  transition:left 0.15s ease, top 0.15s ease;
+}
+
+#result{
+  margin-top:20px;
+  display:none;
+}
+
+#result img{
   width:100%;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 4px;
-  text-align:center;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid white;
-  outline: 1px solid var(--gold-dark);
-  outline-offset: -8px;
-  transition: transform 0.3s ease;
+  border-radius:16px;
+  margin-top:12px;
 }
 
-.event-card:hover { transform: translateY(-5px); }
-
-.event-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin: 10px 0 5px;
-  color: var(--primary);
+/* Hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:floatUp linear forwards;
+  z-index:1;
+  pointer-events:none;
 }
 
-body.hindi-active .event-card h3 { font-family: 'Rozha One', serif; font-size: 1.8rem; }
-
-.event-card strong {
-  font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
-  color: var(--gold-dark);
-  display: block;
-  margin-bottom: 8px;
-}
-
-/* Backgrounds */
-.haldi { background-image:url('https://images.unsplash.com/photo-1606293926075-69a00dbfde0f'); }
-.sangeet { background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552'); }
-.bhaat { background-image:url('https://images.unsplash.com/photo-1604578762246-41134b55a23b'); }
-.wedding { background-image:url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9'); }
-
-/* Venue & Footer */
-.venue { padding: 60px 20px 80px; text-align: center; background: var(--bg-warm); }
-.map-btn {
-  display:inline-block;
-  background: var(--gold-metallic);
-  color: #4a3b18;
-  font-weight: 600;
-  padding: 16px 32px;
-  border-radius: 50px;
-  text-decoration:none;
-  margin-top: 30px;
-  box-shadow: 0 5px 15px rgba(184, 135, 70, 0.4);
-  transition: all 0.3s ease;
-}
-.map-btn:hover { transform: scale(1.05); }
-
-footer {
-  text-align:center;
-  padding: 40px 20px;
-  background: var(--primary);
-  color: var(--gold-light);
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.1rem;
-}
-
-/* Mobile */
-@media (max-width:768px) {
-  .hero h1 { font-size: 3.5rem; }
-  .lang-switch { top: 15px; right: 15px; }
-  .time-box { min-width: 60px; padding: 8px; }
+@keyframes floatUp{
+  from{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-110vh) scale(1.8);
+    opacity:0;
+  }
 }
 </style>
 </head>
-
 <body>
 
-<nav class="lang-switch">
-  <button class="lang-btn active" onclick="setLanguage('en')">ENG</button>
-  <button class="lang-btn" onclick="setLanguage('hi')">हिंदी</button>
-</nav>
+<div class="container">
+  <h1>Would you be my Valentine? 💖</h1>
 
-<section class="hero">
-  <canvas id="fireworks"></canvas>
-
-  <div class="hero-content">
-    <div class="hero-icon" data-key="ganesh">|| Shree Ganeshay Namah ||</div>
-    <p class="save-date" data-key="saveDate">The Wedding Celebration of</p>
-    
-    <h1 data-key="couple">Amit & Deevanshi</h1>
-    
-    <p class="wedding-date" data-key="mainDate">April 19th, 2026</p>
-
-    <div class="countdown">
-      <div class="time-box"><span id="days">0</span><small data-key="dayLabel">Days</small></div>
-      <div class="time-box"><span id="hours">0</span><small data-key="hrLabel">Hrs</small></div>
-      <div class="time-box"><span id="mins">0</span><small data-key="minLabel">Mins</small></div>
-      <div class="time-box"><span id="secs">0</span><small data-key="secLabel">Secs</small></div>
-    </div>
+  <div class="buttons" id="btnArea">
+    <button id="yesBtn">Yes 😍</button>
+    <button id="noBtn">No 🙈</button>
   </div>
-</section>
 
-<div class="main-container">
-  <h2 class="reveal" data-key="itineraryTitle">Wedding Itinerary</h2>
+  <div id="result">
+    <h2>Yay! I knew it ❤️</h2>
+    <p>Happy Valentine’s Day!</p>
 
-  <section class="event-section haldi reveal">
-    <div class="event-card">
-      <strong data-key="haldiDate">April 18, 2026 • 11:00 AM</strong>
-      <h3 data-key="haldiTitle">Haldi Ceremony</h3>
-      <p data-key="haldiLoc">Maheshwari Bhavan</p>
-      <small style="display:block; margin-top:5px; color:#888;" data-key="haldiDesc">Shades of Yellow</small>
-    </div>
-  </section>
-
-  <section class="event-section sangeet reveal">
-    <div class="event-card">
-      <strong data-key="sangeetDate">April 18, 2026 • 06:30 PM</strong>
-      <h3 data-key="sangeetTitle">Sangeet Sandhya</h3>
-      <p data-key="sangeetLoc">Maheshwari Bhavan</p>
-      <small style="display:block; margin-top:5px; color:#888;" data-key="sangeetDesc">Glitz & Glamour</small>
-    </div>
-  </section>
-
-  <section class="event-section bhaat reveal">
-    <div class="event-card">
-      <strong data-key="bhaatDate">April 19, 2026 • 11:00 AM</strong>
-      <h3 data-key="bhaatTitle">Bhaat Program</h3>
-      <p data-key="bhaatLoc">Maheshwari Bhavan</p>
-      <small style="display:block; margin-top:5px; color:#888;" data-key="bhaatDesc">Traditional Attire</small>
-    </div>
-  </section>
-
-  <section class="event-section wedding reveal">
-    <div class="event-card">
-      <strong data-key="weddingDate">April 19, 2026 • 08:00 PM</strong>
-      <h3 data-key="weddingTitle">The Wedding</h3>
-      <p data-key="weddingLoc">City Garden</p>
-      <small style="display:block; margin-top:5px; color:#888;" data-key="weddingDesc">Formal / Ethnic</small>
-    </div>
-  </section>
-
-  <section class="venue reveal">
-    <h2 data-key="venueTitle">The Venue</h2>
-    <p style="font-size:1.1rem; color:#444;">
-      <span data-key="venueText">We can't wait to celebrate with you at</span><br>
-      <strong>Maheshwari Bhavan, Sri Ganganagar</strong>
-    </p>
-    <a class="map-btn" target="_blank" href="https://goo.gl/maps/placeholder" data-key="mapBtn">
-      Navigate via Google Maps
-    </a>
-  </section>
+    <!-- Sample couple image (replace later with your own photo) -->
+    <img
+      src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=900&auto=format&fit=crop"
+      alt="Couple">
+  </div>
 </div>
 
-<footer>
-  <span data-key="footerMsg">With love & blessings</span> 💛 <br> 
-  <span style="font-size:0.8rem; opacity:0.7" data-key="footerNames">Amit & Deevanshi</span>
-</footer>
-
 <script>
-/* ---------------- TRANSLATION DATA ---------------- */
-const translations = {
-  en: {
-    ganesh: "|| Shree Ganeshay Namah ||",
-    saveDate: "The Wedding Celebration of",
-    couple: "Amit & Deevanshi",
-    mainDate: "April 19th, 2026",
-    dayLabel: "Days", hrLabel: "Hrs", minLabel: "Mins", secLabel: "Secs",
-    itineraryTitle: "Wedding Itinerary",
-    
-    haldiDate: "April 18, 2026 • 11:00 AM",
-    haldiTitle: "Haldi Ceremony",
-    haldiLoc: "Maheshwari Bhavan",
-    haldiDesc: "Shades of Yellow",
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const result = document.getElementById("result");
+const container = document.getElementById("btnArea");
 
-    sangeetDate: "April 18, 2026 • 06:30 PM",
-    sangeetTitle: "Sangeet",
-    sangeetLoc: "Maheshwari Bhavan",
-    sangeetDesc: "Glitz & Glamour",
+function moveNoButton() {
 
-    bhaatDate: "April 19, 2026 • 11:00 AM",
-    bhaatTitle: "Bhaat Program",
-    bhaatLoc: "Maheshwari Bhavan",
-    bhaatDesc: "Traditional Attire",
+  const areaWidth = container.clientWidth - noBtn.offsetWidth;
+  const areaHeight = container.clientHeight - noBtn.offsetHeight;
 
-    weddingDate: "April 19, 2026 • 08:00 PM",
-    weddingTitle: "The Wedding",
-    weddingLoc: "City Garden",
-    weddingDesc: "Formal / Ethnic",
+  const x = Math.random() * areaWidth;
+  const y = Math.random() * areaHeight;
 
-    venueTitle: "The Venue",
-    venueText: "We can't wait to celebrate with you at",
-    mapBtn: "Navigate via Google Maps",
-    footerMsg: "With love & blessings",
-    footerNames: "Amit & Deevanshi"
-  },
-  hi: {
-    ganesh: "|| श्री गणेशाय नमः ||",
-    saveDate: "शुभ विवाह",
-    couple: "अमित और दीवांशी",
-    mainDate: "१९ अप्रैल २०२६",
-    dayLabel: "दिन", hrLabel: "घंटे", minLabel: "मिनट", secLabel: "सेकंड",
-    itineraryTitle: "विवाह कार्यक्रम",
-    
-    haldiDate: "१८ अप्रैल २०२६ • प्रात: ११:००",
-    haldiTitle: "हल्दी समारोह",
-    haldiLoc: "महेश्वरी भवन",
-    haldiDesc: "परिधान: पीला रंग",
-
-    sangeetDate: "१८ अप्रैल २०२६ • सायं ६:३०",
-    sangeetTitle: "संगीत संध्या",
-    sangeetLoc: "महेश्वरी भवन",
-    sangeetDesc: "नृत्य और उत्सव",
-
-    bhaatDate: "१९ अप्रैल २०२६ • प्रात: ११:००",
-    bhaatTitle: "भात कार्यक्रम",
-    bhaatLoc: "महेश्वरी भवन",
-    bhaatDesc: "पारंपरिक वेशभूषा",
-
-    weddingDate: "१९ अप्रैल २०२६ • रात्रि ८:००",
-    weddingTitle: "शुभ विवाह",
-    weddingLoc: "सिटी गार्डन",
-    weddingDesc: "औपचारिक / जातीय परिधान",
-
-    venueTitle: "विवाह स्थल",
-    venueText: "हमें आपके आगमन की प्रतीक्षा रहेगी",
-    mapBtn: "गूगल मैप्स पर देखें",
-    footerMsg: "सस्नेह निमंत्रण एवं आशीर्वाद",
-    footerNames: "अमित और दीवांशी"
-  }
-};
-
-/* ---------------- LANGUAGE LOGIC ---------------- */
-function setLanguage(lang) {
-  // Update Buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`).classList.add('active');
-
-  // Update Body Class for Fonts
-  if (lang === 'hi') {
-    document.body.classList.add('hindi-active');
-  } else {
-    document.body.classList.remove('hindi-active');
-  }
-
-  // Update Text
-  const t = translations[lang];
-  document.querySelectorAll('[data-key]').forEach(el => {
-    const key = el.getAttribute('data-key');
-    if (t[key]) el.innerText = t[key];
-  });
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+  noBtn.style.right = "auto";
 }
 
-/* ---------------- COUNTDOWN ENGINE ---------------- */
-const weddingDate = new Date('2026-04-19T20:00:00');
+/* ---- Make NO impossible to click ---- */
+noBtn.addEventListener("mouseenter", moveNoButton);
 
-function updateCountdown() {
-  const diff = weddingDate - new Date();
-  if (diff <= 0) return;
+noBtn.addEventListener("mousedown", function(e){
+  e.preventDefault();
+  moveNoButton();
+});
 
-  // Convert numbers to Hindi digits if mode is Hindi
-  const isHindi = document.body.classList.contains('hindi-active');
-  const formatNum = (num) => {
-    if (!isHindi) return num;
-    const hindiDigits = ['०','१','२','३','४','५','६','७','८','९'];
-    return num.toString().split('').map(d => hindiDigits[d]).join('');
-  };
+noBtn.addEventListener("touchstart", function(e){
+  e.preventDefault();
+  moveNoButton();
+}, { passive:false });
 
-  document.getElementById('days').innerText = formatNum(Math.floor(diff / 86400000));
-  document.getElementById('hours').innerText = formatNum(Math.floor(diff / 3600000) % 24);
-  document.getElementById('mins').innerText = formatNum(Math.floor(diff / 60000) % 60);
-  document.getElementById('secs').innerText = formatNum(Math.floor(diff / 1000) % 60);
+noBtn.addEventListener("click", function(e){
+  e.preventDefault();
+  moveNoButton();
+});
+
+/* ---- YES logic ---- */
+yesBtn.addEventListener("click", () => {
+  result.style.display = "block";
+  startHearts();
+});
+
+/* ---- Hearts animation ---- */
+let heartIntervalStarted = false;
+
+function startHearts(){
+  if(heartIntervalStarted) return;
+  heartIntervalStarted = true;
+
+  setInterval(createHeart, 200);
 }
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = "❤️";
 
-/* ---------------- SCROLL REVEAL ---------------- */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('active');
-  });
-}, { threshold: 0.15 });
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+  heart.style.fontSize = (Math.random() * 10 + 16) + "px";
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.body.appendChild(heart);
 
-/* ---------------- FIREWORKS ---------------- */
-const canvas = document.getElementById('fireworks');
-const ctx = canvas.getContext('2d');
-let fireworks = [];
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
 }
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-function createFirework() {
-  const x = Math.random() * canvas.width;
-  const y = Math.random() * (canvas.height * 0.4); 
-  const particleCount = window.innerWidth < 768 ? 30 : 60; 
-  const colors = ['#d4af37', '#fdfbf7', '#eebb55', '#ffddaa'];
-
-  const particles = [];
-  for (let i = 0; i < particleCount; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const velocity = Math.random() * 3 + 1;
-    particles.push({
-      x, y,
-      vx: Math.cos(angle) * velocity,
-      vy: Math.sin(angle) * velocity,
-      life: 1, decay: Math.random() * 0.015 + 0.005,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      gravity: 0.05
-    });
-  }
-  fireworks.push(particles);
-}
-
-function animateFireworks() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  fireworks.forEach((particles, index) => {
-    if (particles.length === 0 || particles[0].life <= 0) {
-      fireworks.splice(index, 1);
-      return;
-    }
-    particles.forEach(p => {
-      p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.life -= p.decay;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = Math.max(p.life, 0);
-      ctx.fill();
-    });
-  });
-  ctx.globalAlpha = 1; 
-  requestAnimationFrame(animateFireworks);
-}
-animateFireworks();
-setInterval(() => { if (document.visibilityState === 'visible') createFirework(); }, 1200);
-setTimeout(createFirework, 500);
-
 </script>
+
 </body>
 </html>
