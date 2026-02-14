@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +43,21 @@ header h1{
   -webkit-text-fill-color:transparent;
 }
 
-header p{
-  opacity:0.85;
+/* ---------------- Music Button ---------------- */
+
+.music-btn{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:999;
+  background:#ff7ecb;
+  color:#000;
+  border:none;
+  border-radius:50px;
+  padding:10px 16px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
 
 /* ---------------- Floating Hearts ---------------- */
@@ -65,14 +79,8 @@ header p{
 }
 
 @keyframes floatUp{
-  from{
-    transform:translateY(0) scale(1);
-    opacity:0.9;
-  }
-  to{
-    transform:translateY(-110vh) scale(1.6);
-    opacity:0;
-  }
+  from{transform:translateY(0) scale(1);opacity:0.9;}
+  to{transform:translateY(-110vh) scale(1.6);opacity:0;}
 }
 
 /* ---------------- Timeline ---------------- */
@@ -112,7 +120,7 @@ section{
   border-radius:20px;
   padding:18px;
   box-shadow:0 15px 40px rgba(0,0,0,0.4);
-  transform:translateY(60px) scale(0.95);
+  transform:translateY(60px) scale(.95);
   opacity:0;
   transition:1s ease;
 }
@@ -121,8 +129,6 @@ section{
   transform:translateY(0) scale(1);
   opacity:1;
 }
-
-/* -------- Image styling -------- */
 
 .card-image{
   width:100%;
@@ -138,29 +144,14 @@ section{
   height:100%;
   object-fit:cover;
   transition:transform 1.2s ease;
-  filter:brightness(0.95);
 }
 
 .card.show .card-image img{
   transform:scale(1.08);
 }
 
-.card-image::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:16px;
-  background:linear-gradient(to top, rgba(0,0,0,.45), transparent);
-}
-
-.card.left{
-  left:0;
-  text-align:right;
-}
-
-.card.right{
-  left:50%;
-}
+.card.left{ left:0; text-align:right; }
+.card.right{ left:50%; }
 
 .card::after{
   content:'';
@@ -173,13 +164,8 @@ section{
   box-shadow:0 0 15px #ff7ecb;
 }
 
-.card.left::after{
-  right:-8px;
-}
-
-.card.right::after{
-  left:-8px;
-}
+.card.left::after{ right:-8px; }
+.card.right::after{ left:-8px; }
 
 .card h3{
   font-family:'Playfair Display', serif;
@@ -188,33 +174,75 @@ section{
   color:#ffd1ec;
 }
 
-.card span{
-  font-size:12px;
-  opacity:0.8;
-}
+.card span{ font-size:12px; opacity:.8; }
+.card p{ font-size:14px; line-height:1.6; opacity:.9; }
 
-.card p{
-  font-size:14px;
-  line-height:1.6;
-  opacity:0.9;
-}
+/* ---------------- Valentine Question ---------------- */
 
-/* ---------------- Footer ---------------- */
-
-footer{
+.valentine-section{
   text-align:center;
-  padding:60px 20px;
-  font-size:14px;
-  opacity:0.85;
+  margin-top:120px;
+  position:relative;
+}
+
+.valentine-section h2{
+  font-family:'Playfair Display', serif;
+  font-size:2.3rem;
+  margin-bottom:30px;
+}
+
+.valentine-box{
+  position:relative;
+  height:180px;
+}
+
+.valentine-box button{
+  padding:12px 26px;
+  border-radius:30px;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+#yesBtn{
+  background:#ff7ecb;
+}
+
+#noBtn{
+  background:#444;
+  color:#fff;
+  position:absolute;
+  left:55%;
+  top:60%;
+}
+
+/* ---------------- Celebration ---------------- */
+
+.celebration{
+  display:none;
+  margin-top:40px;
+  animation:pop 1s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.celebration img{
+  width:260px;
+  max-width:90%;
+  border-radius:18px;
+  margin-top:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
 }
 
 /* ---------------- Mobile ---------------- */
 
 @media(max-width:768px){
 
-  .timeline::before{
-    left:15px;
-  }
+  .timeline::before{ left:15px; }
 
   .card,
   .card.left,
@@ -226,18 +254,27 @@ footer{
     text-align:left;
   }
 
-  .card::after{
-    left:7px !important;
+  .card::after{ left:7px !important; }
+
+  .valentine-box{
+    height:220px;
   }
 
-  .card-image{
-    height:200px;
+  #noBtn{
+    left:40%;
   }
 }
 
 </style>
 </head>
 <body>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+  <source src="music/romantic.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" id="musicBtn">▶ Music</button>
 
 <div class="hearts" id="hearts"></div>
 
@@ -251,11 +288,10 @@ footer{
 <section>
   <div class="timeline">
 
-    <!-- Engagement -->
     <div class="card left">
       <div class="card-inner">
         <div class="card-image">
-          <img src="images/engagement.jpeg" alt="">
+          <img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?q=80&w=900&auto=format&fit=crop">
         </div>
         <h3>Engagement 💍</h3>
         <span>The day our forever began</span>
@@ -263,11 +299,10 @@ footer{
       </div>
     </div>
 
-    <!-- First Date -->
     <div class="card right">
       <div class="card-inner">
         <div class="card-image">
-          <img src="images/First_date.jpeg" alt="">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=900&auto=format&fit=crop">
         </div>
         <h3>First Date 🌙</h3>
         <span>Butterflies & shy smiles</span>
@@ -275,11 +310,10 @@ footer{
       </div>
     </div>
 
-    <!-- First Kiss -->
     <div class="card left">
       <div class="card-inner">
         <div class="card-image">
-          <img src="images/first_kiss.jpeg" alt="">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=900&auto=format&fit=crop">
         </div>
         <h3>First Kiss 💖</h3>
         <span>A moment frozen in time</span>
@@ -287,11 +321,10 @@ footer{
       </div>
     </div>
 
-    <!-- Shadi ki Shopping -->
     <div class="card right">
       <div class="card-inner">
         <div class="card-image">
-          <img src="images/Chandani_Chowk_shopping.jpeg" alt="">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=900&auto=format&fit=crop">
         </div>
         <h3>First Trip ✈️</h3>
         <span>New places, same hearts</span>
@@ -299,11 +332,10 @@ footer{
       </div>
     </div>
 
-    <!-- Small fights -->
     <div class="card left">
       <div class="card-inner">
         <div class="card-image">
-          <img src="images/engagement.jpeg" alt="">
+          <img src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?q=80&w=900&auto=format&fit=crop">
         </div>
         <h3>Every Little Fight 😅</h3>
         <span>Growing stronger together</span>
@@ -311,11 +343,10 @@ footer{
       </div>
     </div>
 
-    <!-- Forever -->
     <div class="card right">
       <div class="card-inner">
         <div class="card-image">
-          <img src="images/engagement.jpeg" alt="">
+          <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=900&auto=format&fit=crop">
         </div>
         <h3>Forever & Always ♾️</h3>
         <span>Our beautiful tomorrow</span>
@@ -324,13 +355,32 @@ footer{
     </div>
 
   </div>
+
+  <!-- Valentine question -->
+  <div class="valentine-section">
+    <h2>Will you be my Valentine? 💘</h2>
+
+    <div class="valentine-box">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+
+    <div class="celebration" id="celebration">
+      <h2>Yayyy!!! 💕 You made my heart the happiest!</h2>
+      <p>Happy Valentine’s Day, my love.</p>
+      <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=900&auto=format&fit=crop">
+    </div>
+  </div>
+
 </section>
 
-<footer>
+<footer style="text-align:center;padding:60px 20px;opacity:.85;">
   With love & blessings ❤️
 </footer>
 
 <script>
+/* Hearts */
+
 const heartsContainer = document.getElementById("hearts");
 
 function createHeart(){
@@ -344,13 +394,11 @@ function createHeart(){
   heartsContainer.appendChild(heart);
   setTimeout(()=>heart.remove(),12000);
 }
-
 setInterval(createHeart, 300);
 
 /* Scroll reveal */
 
 const cards = document.querySelectorAll(".card");
-
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -358,8 +406,72 @@ const observer = new IntersectionObserver(entries=>{
     }
   });
 },{threshold:0.2});
-
 cards.forEach(card=>observer.observe(card));
+
+/* Music */
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+let playing = false;
+
+musicBtn.addEventListener("click",()=>{
+  if(!playing){
+    music.play();
+    musicBtn.textContent = "⏸ Music";
+  }else{
+    music.pause();
+    musicBtn.textContent = "▶ Music";
+  }
+  playing = !playing;
+});
+
+/* Auto start music on first interaction */
+
+let autoStarted = false;
+
+function tryAutoPlay() {
+  if (autoStarted) return;
+
+  music.play().then(() => {
+    playing = true;
+    musicBtn.textContent = "⏸ Music";
+    autoStarted = true;
+  }).catch(()=>{});
+}
+
+document.addEventListener("click", tryAutoPlay, { once:true });
+document.addEventListener("touchstart", tryAutoPlay, { once:true });
+
+/* No button runaway 😄 */
+
+const noBtn = document.getElementById("noBtn");
+const box = document.querySelector(".valentine-box");
+
+function moveNo(){
+  const boxRect = box.getBoundingClientRect();
+  const maxX = boxRect.width - noBtn.offsetWidth;
+  const maxY = boxRect.height - noBtn.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("click", moveNo);
+
+/* Yes celebration */
+
+const yesBtn = document.getElementById("yesBtn");
+const celebration = document.getElementById("celebration");
+
+yesBtn.addEventListener("click",()=>{
+  celebration.style.display = "block";
+  celebration.scrollIntoView({behavior:"smooth"});
+});
+
 </script>
 
 </body>
